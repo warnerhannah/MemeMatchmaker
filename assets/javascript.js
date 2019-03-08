@@ -1,8 +1,8 @@
 // initialize firebase 
 
 // GLOBAL VARIABLES
-var submittedImage ;
-
+var keyword;
+var submittedImage;
 // OLLIE
 
 // TRY IT OUT 
@@ -30,7 +30,7 @@ $(document).ready(function () {
 $(document).ready(function () {
 
     $("#submit-image").on("click", function  () {
-        submittedImage = $("#image-input").val().trim()
+        submittedImage = $("#image-input").val().trim();
         analyzePhoto();
     })
 })
