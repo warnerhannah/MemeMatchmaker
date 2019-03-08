@@ -6,3 +6,6 @@ body {
     padding: 20px;
     font-family: 'Cinzel', serif;
 }
+.card-title {
+    text-align: center;
+}
