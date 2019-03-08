@@ -18,6 +18,26 @@ var keyword;
 // Return MEME
 
 
+$(document).ready(function () {
+
+    $("#button-2").on("click", function picClick() {
+        var submittedImage = $(this).val().trim()
+        analyzePhoto(submittedImage);
+    })
+
+
+
+
+});
+
+$(document).ready(function () {
+
+    $("#submit-image").on("click", function  () {
+        var submittedImage = $("#image-input").val().trim()
+        analyzePhoto(submittedImage);
+    })
+})
+
 analyzePhoto();
 
 // HANNAH -
@@ -93,4 +113,3 @@ function generateMeme(keyword) {
 
 
 // POSSIBILITY TO USE FIREBASE 
-// DISPLAY RECENT MEMES GENERATED 
