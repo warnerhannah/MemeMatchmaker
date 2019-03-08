@@ -22,7 +22,7 @@ $(document).ready(function () {
     var image = $("#image-input").val().trim();
 
     $("#button-2").on("click", function picClick() {
-        var submittedImage = $(this).attr("src");
+        var submittedImage = $(this).val().trim()
         analyzePhoto(submittedImage);
     })
 
@@ -32,10 +32,10 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
-    var image = $("#image-input").val().trim();
+    var image = $("#image-input");
 
     $("#submit-image").on("click", function  () {
-        var submittedImage = $("#image-input").attr("src");
+        var submittedImage = $("#image-input").val().trim()
         analyzePhoto(submittedImage);
     })
 
@@ -47,8 +47,7 @@ $(document).ready(function () {
     // PULL DATA FROM FACE++
     // SAVE VARIABLES TO PLUG INTO MEME GENERATOR 
     function analyzePhoto() {
-        var submittedImage = $(this).attr("src");
-        ;
+        var submittedImage = $("#image-input").val().trim();
         var queryURL = ""
 
         $.ajax({
