@@ -1,7 +1,7 @@
 // initialize firebase 
 
 // GLOBAL VARIABLES
-var keyword;
+var submittedImage ;
 
 // OLLIE
 
@@ -21,8 +21,8 @@ var keyword;
 $(document).ready(function () {
 
     $("#button-2").on("click", function picClick() {
-        var submittedImage = $(this).val().trim()
-        analyzePhoto(submittedImage);
+        submittedImage = $(this).val().trim();
+        analyzePhoto();
     })
 
 });
@@ -30,8 +30,8 @@ $(document).ready(function () {
 $(document).ready(function () {
 
     $("#submit-image").on("click", function  () {
-        var submittedImage = $("#image-input").val().trim()
-        analyzePhoto(submittedImage);
+        submittedImage = $("#image-input").val().trim()
+        analyzePhoto();
     })
 })
 
@@ -61,19 +61,11 @@ function analyzePhoto() {
   }).then(function (response) {
     console.log(response)
     emotionsArray = ["anger", "disgust", "fear", "happiness", "neutral", "sadness", "surprise"]
-    var highestNumber = _(response.faces[0].attributes.emotion).values().max();
-    console.log(highestNumber);
-
-    Object.prototype.getKeyByValue = function (value) {
-      for (var prop in this) {
-        if (this.hasOwnProperty(prop)) {
-          if (this[prop] === value)
-            return prop;
-        }
-      }
-    };
-
-    keyword = ((response.faces[0].attributes.emotion).getKeyByValue(highestNumber));
+    // var highestNumber = _(response.faces[0].attributes.emotion).values().max();
+    obj = (response.faces[0].attributes.emotion);
+    /// GET KEY FROM VALUE
+    var maxKey = _.maxBy(Object.keys(obj), o => obj[o]);
+    keyword = maxKey
     generateMeme(keyword);
   });
 };
@@ -81,32 +73,32 @@ function analyzePhoto() {
 
 
 // API FUNCTION - MEME GENERATOR
-function generateMeme(keyword) {
+function generateMeme(word) {
   // API KEY 9aa77d63-bbeb-4dba-ab33-cccbec5e6419
   //.instanceImageURL for image!
-  keyword;
-  console.log(keyword);
-  var queryURL = "http://version1.api.memegenerator.net//Generators_Search?q=" + keyword + "&pageIndex=0&pageSize=12&apiKey=9aa77d63-bbeb-4dba-ab33-cccbec5e6419";
-
+  console.log(word)
+  var queryURL = "http://version1.api.memegenerator.net/Generators_Search?q=" + word + "&apiKey=9aa77d63-bbeb-4dba-ab33-cccbec5e6419";
+  console.log(queryURL)
   $.ajax({
     url: queryURL,
     method: "GET"
-  }).then(function (response) {
+  }).then(function(response) {
+    alert("I am working!");
     console.log(response);
     // EMPTY CURRENT MEME IMAGE 
     $("#memeDump").empty();
-    // CREATE NEW IMAGE
+    // // CREATE NEW IMAGE
     var yourMeme = $("<img>");
-    // TARGET URL FROM RESPONSE
+    // // TARGET URL FROM RESPONSE
     var memeURL = response.instanceImageURL;
-    // CHANGE SOURCE TO NEW MEME URL
+    // // CHANGE SOURCE TO NEW MEME URL
     yourMeme.attr("src", memeURL);
-    // APPEND TO DIV TO SHOW ON HTML
+    // // APPEND TO DIV TO SHOW ON HTML
     $("#memeDump").append(yourMeme);
+  }).catch(function(err){
+    console.log(err);
   });
-};
-
-
+}
 
 
 // POSSIBILITY TO USE FIREBASE 
