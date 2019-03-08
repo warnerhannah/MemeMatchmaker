@@ -25,9 +25,6 @@ $(document).ready(function () {
         analyzePhoto(submittedImage);
     })
 
-
-
-
 });
 
 $(document).ready(function () {
