@@ -2,7 +2,7 @@
 
 // GLOBAL VARIABLES
 var keyword;
-
+var submittedImage;
 // OLLIE
 
 // TRY IT OUT 
@@ -21,7 +21,7 @@ var keyword;
 $(document).ready(function () {
 
     $("#button-2").on("click", function picClick() {
-        var submittedImage = $(this).val().trim()
+        submittedImage = $(this).val().trim();
         analyzePhoto(submittedImage);
     })
 
@@ -33,8 +33,8 @@ $(document).ready(function () {
 $(document).ready(function () {
 
     $("#submit-image").on("click", function  () {
-        var submittedImage = $("#image-input").val().trim()
-        analyzePhoto(submittedImage);
+        submittedImage = $("#image-input").val().trim();
+        analyzePhoto();
     })
 })
 
