@@ -19,7 +19,6 @@ var keyword;
 
 
 $(document).ready(function () {
-    var image = $("#image-input").val().trim();
 
     $("#button-2").on("click", function picClick() {
         var submittedImage = $(this).val().trim()
@@ -32,7 +31,6 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
-    var image = $("#image-input");
 
     $("#submit-image").on("click", function  () {
         var submittedImage = $("#image-input").val().trim()
