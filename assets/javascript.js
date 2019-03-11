@@ -30,17 +30,16 @@ var submittedImage;
 
 $(document).ready(function () {
 
-    $("img").on("click", function picClick() {
-      alert("Click!")
-        // get the url of the site
-        submittedImage = $(this).attr("url");
-        console.log(submittedImage);
-        analyzePhoto();
-    })
+  $("img").on("click", function picClick() {
+    submittedImage = $(this).attr("url");
+    console.log(submittedImage);
+    analyzePhoto();
+  })
 });
 
 $(document).ready(function () {
 
+<<<<<<< HEAD
     $("#submit-image").on("click", function  () {
         submittedImage = $("#image-input").val().trim();
         console.log(submittedImage);
@@ -53,7 +52,26 @@ $(document).ready(function () {
         database.ref().push(newImage);
 
     })
+=======
+  $("#submit-image").on("click", function () {
+    submittedImage = $("#image-input").val().trim();
+    console.log(submittedImage);
+    analyzePhoto();
+    displayYourImage(submittedImage);
+    $("#image-input").val("");
+  })
+>>>>>>> c5011f00a41b7238164b8c0a61625f3b995cb3ba
 })
+
+
+function displayYourImage(source) {
+  console.log("working");
+  $("#yourImageDump").empty();
+  var yourImg = $("<img>");
+  yourImg.attr("id", "your-pic");
+  yourImg.attr("src", source);
+  $("#yourImageDump").append(yourImg);
+}
 
 
 // HANNAH -
@@ -78,6 +96,7 @@ function analyzePhoto() {
       return_attributes: "emotion",
     }
   }).then(function (response) {
+
     console.log(response)
     emotionsArray = ["anger", "disgust", "fear", "happiness", "neutral", "sadness", "surprise"]
     // var highestNumber = _(response.faces[0].attributes.emotion).values().max();
@@ -101,12 +120,13 @@ function generateMeme(word) {
   $.ajax({
     url: queryURL,
     method: "GET"
-  }).then(function(response) {
+  }).then(function (response) {
     console.log(response);
     // EMPTY CURRENT MEME IMAGE 
     $("#memeDump").empty();
     // // CREATE NEW IMAGE
-    var yourMeme = $("<img id='newimage'");
+    var yourMeme = $("<img>");
+    yourMeme.attr("id", "your-meme");
     // // TARGET URL FROM RESPONSE
     var i = Math.floor((Math.random() * 11) + 0);
     console.log(i);
@@ -115,7 +135,7 @@ function generateMeme(word) {
     yourMeme.attr("src", memeURL);
     // // APPEND TO DIV TO SHOW ON HTML
     $("#memeDump").append(yourMeme);
-  }).catch(function(err){
+  }).catch(function (err) {
     console.log(err);
   });
 }
