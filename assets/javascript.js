@@ -8,6 +8,7 @@ var config = {
   messagingSenderId: "433999765554"
 };
 firebase.initializeApp(config);
+var database = firebase.database();
 
 // GLOBAL VARIABLES
 var keyword;
@@ -92,14 +93,13 @@ function generateMeme(word) {
     url: queryURL,
     method: "GET"
   }).then(function(response) {
-    alert("I am working!");
     console.log(response);
     // EMPTY CURRENT MEME IMAGE 
     $("#memeDump").empty();
     // // CREATE NEW IMAGE
     var yourMeme = $("<img>");
     // // TARGET URL FROM RESPONSE
-    var memeURL = response.instanceImageURL;
+    var memeURL = response.result[0].imageUrl;
     // // CHANGE SOURCE TO NEW MEME URL
     yourMeme.attr("src", memeURL);
     // // APPEND TO DIV TO SHOW ON HTML
