@@ -45,6 +45,7 @@ $(document).ready(function () {
         submittedImage = $("#image-input").val().trim();
         console.log(submittedImage);
         analyzePhoto();
+        displayYourImage(submittedImage);
         $("#image-input").val("");
 
         var newImage= {
@@ -55,12 +56,12 @@ $(document).ready(function () {
     })
 })
 function displayYourImage(source) {
-  console.log(“working”);
-  $(“#yourImageDump”).empty();
-  var yourImg = $(“<img>“);
-  yourImg.attr(“id”, “your-pic”);
-  yourImg.attr(“src”, source);
-  $(“#yourImageDump”).append(yourImg);
+  console.log("working");
+  $("#yourImageDump").empty();
+  var yourImg = $("<img>");
+  yourImg.attr("id", "your-pic");
+  yourImg.attr("src", source);
+  $("#yourImageDump").append(yourImg);
  }
 
 // HANNAH -
@@ -113,7 +114,8 @@ function generateMeme(word) {
     // EMPTY CURRENT MEME IMAGE 
     $("#memeDump").empty();
     // // CREATE NEW IMAGE
-    var yourMeme = $("<img id='newimage'");
+    var yourMeme = $("<img>");
+    yourMeme.attr("id", "your-meme");
     // // TARGET URL FROM RESPONSE
     var i = Math.floor((Math.random() * 11) + 0);
     console.log(i);
