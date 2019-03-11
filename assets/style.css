@@ -5,7 +5,14 @@
 body {
     padding: 20px;
     font-family: 'Cinzel', serif;
+    background-color: lightslategray;
 }
 .card-title {
     text-align: center;
+}
+#submit-input {
+    margin-left: 15%;
+}
+#your-photo {
+    margin-top: 10px;
 }
