@@ -16,3 +16,16 @@ body {
 #your-photo {
     margin-top: 10px;
 }
+
+#your-pic {
+    width: 400px;
+    height: 300px;
+    padding: 10px;
+    text-align: center;
+}
+
+#your-meme {
+    width: 400px;
+    height: 400px;
+    text-align: center;
+}
