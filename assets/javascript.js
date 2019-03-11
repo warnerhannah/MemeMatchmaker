@@ -1,4 +1,13 @@
 // initialize firebase 
+var config = {
+  apiKey: "AIzaSyC5hdMO9KuQcj0MXvZUT62F-SylGGJDbyo",
+  authDomain: "memematchmaker.firebaseapp.com",
+  databaseURL: "https://memematchmaker.firebaseio.com",
+  projectId: "memematchmaker",
+  storageBucket: "memematchmaker.appspot.com",
+  messagingSenderId: "433999765554"
+};
+firebase.initializeApp(config);
 
 // GLOBAL VARIABLES
 var keyword;
