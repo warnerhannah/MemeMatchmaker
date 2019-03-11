@@ -65,7 +65,7 @@ function analyzePhoto() {
     obj = (response.faces[0].attributes.emotion);
     /// GET KEY FROM VALUE
     var maxKey = _.maxBy(Object.keys(obj), o => obj[o]);
-    keyword = maxKey
+    keyword = maxKey;
     generateMeme(keyword);
   });
 };
@@ -76,9 +76,9 @@ function analyzePhoto() {
 function generateMeme(word) {
   // API KEY 9aa77d63-bbeb-4dba-ab33-cccbec5e6419
   //.instanceImageURL for image!
-  console.log(word)
+  console.log(word);
   var queryURL = "http://version1.api.memegenerator.net/Generators_Search?q=" + word + "&apiKey=9aa77d63-bbeb-4dba-ab33-cccbec5e6419";
-  console.log(queryURL)
+  console.log(queryURL);
   $.ajax({
     url: queryURL,
     method: "GET"
