@@ -22,21 +22,22 @@ var memeArray = [];
 // DISPLAY THEM AS IMAGES 
 database.ref().on("child_added", function (snapshot) {
   memeArray.push(snapshot.val().meme);
-
   displayRecentMemes();
 });
 
 
 // append last 5 of array to display
 function displayRecentMemes() {
+  console.log(memeArray)
   var useArray = (memeArray.slice(-5));
+  console.log(useArray);
 
   $("#recentmeme1").attr("src", useArray[0]);
   $("#recentmeme2").attr("src", useArray[1]);
   $("#recentmeme3").attr("src", useArray[2]);
   $("#recentmeme4").attr("src", useArray[3]);
   $("#recentmeme5").attr("src", useArray[4])
-}
+};
 
 
 
@@ -44,7 +45,7 @@ function displayRecentMemes() {
 $(document).ready(function () {
   $("img").on("click", function picClick() {
     // get the url of the site
-    submittedImage = $(this).attr("url");
+    submittedImage = $(this).attr("src");
     displayYourImage(submittedImage);
     analyzePhoto();
   })
@@ -70,6 +71,11 @@ function displayYourImage(source) {
   yourImg.attr("src", source);
   $("#yourImageDump").append(yourImg);
 }
+
+$( document ).ajaxError(function() {
+  alert("Connection to server failed, please try again!")
+});
+
 
 // FUNCTION FOR API FACE++
 function analyzePhoto() {
@@ -127,8 +133,6 @@ function generateMeme(word) {
     $("#memeDump").append(yourMeme);
 
     submittedImage = $("#image-input").val().trim();
-
-    memeArray.push(memeURL);
 
     // ASSIGN NEW MEMES TO FIREBASE
     var newMeme = {
