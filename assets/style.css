@@ -17,6 +17,18 @@ body {
     margin-top: 10px;
 }
 
-#newimage {
-    width: 80%;
+#your-pic {
+    width: 400px;
+    height: 300px;
+    padding: 10px;
+    text-align: center;
+}
+
+#your-meme {
+    width: 400px;
+    height: 400px;
+    text-align: center;
+}
+.card {
+    margin-bottom: 20px;
 }
