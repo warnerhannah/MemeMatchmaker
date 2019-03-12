@@ -3,9 +3,9 @@
 
 <head>
     <title>Meme Matchmaker</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-        crossorigin="anonymous">
-        <link href="https://fonts.googleapis.com/css?family=Cinzel" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Cinzel" rel="stylesheet">
     <link rel="stylesheet" href="assets/style.css">
     <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -19,7 +19,9 @@
         <div class="jumbotron jumbotron-fluid">
             <div class="container">
                 <h1 class="display-4">The Meme Matchmaker</h1>
-                <p class="lead">Submit URL of an image of yourself below, to return a random - but related! - meme. Our application will analyze your facial expression and return a meme based on the emotion that you are showing. </p>
+                <p class="lead">Submit URL of an image of yourself below, to return a random - but related! - meme. Our
+                    application will analyze your facial expression and return a meme based on the emotion that you are
+                    showing. </p>
             </div>
         </div>
     </header>
@@ -35,77 +37,78 @@
 
                         <div class="row">
                             <div class="col">
-                                <img src="assets/images/olga.jpg" class="img-fluid" id="button-2" alt="Responsive image" url="file:///Users/hannahwarner/Desktop/MemeMatchmaker/assets/images/olga.jpg">
+                                <img src="assets/images/olga.jpg" class="img-fluid" id="button-2" alt="Responsive image"
+                                    url="file:///Users/hannahwarner/Desktop/MemeMatchmaker/assets/images/olga.jpg">
                             </div>
 
                             <div class="col">
-                                <img src="assets/images/hannah.jpg" class="img-fluid" id="button-2" alt="Responsive image" url="file:///Users/hannahwarner/Desktop/MemeMatchmaker/assets/images/hannah.jpg">
+                                <img src="assets/images/hannah.jpg" class="img-fluid" id="button-2"
+                                    alt="Responsive image"
+                                    url="file:///Users/hannahwarner/Desktop/MemeMatchmaker/assets/images/hannah.jpg">
                             </div>
 
                             <div class="col">
-                                <img src="assets/images/morpheus.png" class="img-fluid" id="button-2" alt="Responsive image" url="file:///Users/hannahwarner/Desktop/MemeMatchmaker/assets/images/morpheus.jpg"">
+                                <img src="assets/images/morpheus.png" class="img-fluid" id="button-2"
+                                    alt="Responsive image"
+                                    url="file:///Users/hannahwarner/Desktop/MemeMatchmaker/assets/images/morpheus.jpg"">
                             </div>
                         </div>
                     
                         
-                        <div class="row">
-                            <h5 class="card-title w-100 text-center" id="your-photo">Your Photo</h5>
+                        <div class=" row">
+                                <h5 class="card-title w-100 text-center" id="your-photo">Your Photo</h5>
+                            </div>
+                            <div class="row" id="submit-input">
+                                <input type="text" name="lname" id="image-input"><br>
+                                <input type="submit" value="Submit" id="submit-image">
+                            </div>
+
+                            <div class="row" id="yourImageDump">
+                            </div>
                         </div>
-                        <div class="row" id="submit-input">
-                            <input type="text" name="lname" id="image-input"><br>
-                            <input type="submit" value="Submit" id="submit-image">
-                        </div>
-
-                        <div class="row" id="yourImageDump">
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        
-
-
-            <div class="col">
-              <div class="card" style="width: 30rem;">
-                <div class="card-body">
-                    <h5 class="card-title">Meme Returned</h5>
-                    <div id="memeDump">
 
                     </div>
                 </div>
-              </div>
+
+
+
+                <div class="col">
+                    <div class="card" style="width: 30rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">Meme Returned</h5>
+                            <div id="memeDump">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
+
+
+            <div class="row" id="recentmemescontainer">
+                <div class="col">
+                    <div class="card" id="recentmemes">
+                        <div class="card-body">
+                            <h5>Recent Memes Generated</h5>
+                            <img id="recentmeme1" src="" alt="">
+                            <img id="recentmeme2" src="" alt="">
+                            <img id="recentmeme3" src="" alt="">
+                            <img id="recentmeme4" src="" alt="">
+                            <img id="recentmeme5" src="" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
         </div>
-
-<<<<<<< HEAD
-=======
-
-            <div class="col">
-                <div class="card" id="recentmemes">
-                  <div class="card-body">
-                    <h5>Recent Memes Generated</h5>
-                    <img id="recentmeme1" src="" alt="">
-                    <img id="recentmeme2" src="" alt="">
-                    <img id="recentmeme3" src="" alt="">
-                    <img id="recentmeme4" src="" alt="">
-                    <img id="recentmeme5" src="" alt="">
-                  </div>
-                </div>
-              </div>
-
-
-
-       </div>
->>>>>>> 74fcfca0833767a938e0df72f69ad2e9e430c528
     </div>
-    
+
     <footer>
         Our footer
     </footer>
-     <script src="assets/javascript.js"></script>
- </body>
- 
- </html>
+    <script src="assets/javascript.js"></script>
+</body>
 
-
-
+</html>
