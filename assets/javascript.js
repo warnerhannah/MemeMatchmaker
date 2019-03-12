@@ -55,16 +55,18 @@ $(document).ready(function () {
 // ON CLICK FXN FOR SUBMIT BUTTON
 $(document).ready(function () {
   $("#submit-image").on("click", function () {
-    submittedImage = $("#image-input").val().trim();
-    console.log(submittedImage);
-    analyzePhoto();
-    displayYourImage(submittedImage);
-    $("#image-input").val("");
     if (!$("#image-input").val()){
       var x = document.getElementById("toast");
       x.className = "show";
       setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
     }
+    
+    submittedImage = $("#image-input").val().trim();
+    console.log(submittedImage);
+    analyzePhoto();
+    displayYourImage(submittedImage);
+    $("#image-input").val("");
+
   })
 })
 
@@ -78,8 +80,11 @@ function displayYourImage(source) {
 }
 
 $( document ).ajaxError(function() {
-  alert("Connection to server failed, please try again!")
-});
+  {
+    var x = document.getElementById("snackbar");
+    x.className = "show";
+    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+  }});
 
 
 // FUNCTION FOR API FACE++
