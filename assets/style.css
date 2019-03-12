@@ -40,9 +40,14 @@ footer {
 
 #recentmemes { 
     text-align: center;
-    margin-bottom: 20px;
 }
 
-#recentmemescontainer {
-    width: w-100;
+#recentmeme1,
+#recentmeme2,
+#recentmeme3,
+#recentmeme4,
+#recentmeme5 {
+    width: 150px;
+    height: 150px;
+    margin: 10px;
 }
