@@ -3,7 +3,6 @@
 }
 
 body {
-    padding: 20px;
     font-family: 'Cinzel', serif;
     background-color: lightslategray;
 }
@@ -31,4 +30,10 @@ body {
 }
 .card {
     margin-bottom: 20px;
+}
+
+footer {
+    background: white;
+    margin: 0;
+    padding: 0;
 }
