@@ -60,6 +60,11 @@ $(document).ready(function () {
     analyzePhoto();
     displayYourImage(submittedImage);
     $("#image-input").val("");
+    if (!$("#image-input").val()){
+      var x = document.getElementById("toast");
+      x.className = "show";
+      setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+    }
   })
 })
 
