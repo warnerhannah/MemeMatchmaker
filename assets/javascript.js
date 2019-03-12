@@ -16,6 +16,8 @@ var keyword;
 var submittedImage;
 var memeArray = [];
 
+$("#loadingGif").hide();
+$("#knowyourmeme").hide();
 
 
 // PULL RECENTLY GENERATED MEMES FROM FB 
@@ -36,7 +38,7 @@ function displayRecentMemes() {
   $("#recentmeme2").attr("src", useArray[1]);
   $("#recentmeme3").attr("src", useArray[2]);
   $("#recentmeme4").attr("src", useArray[3]);
-  $("#recentmeme5").attr("src", useArray[4])
+  $("#recentmeme5").attr("src", useArray[4]);
 };
 
 
@@ -44,6 +46,10 @@ function displayRecentMemes() {
 // ON CLICK FXN FOR EXAMPLE IMAGES
 $(document).ready(function () {
   $("img").on("click", function picClick() {
+    // $("#memeDump").empty();
+
+    $("#loadingGif").show();
+
     // get the url of the site
     submittedImage = $(this).attr("src");
     displayYourImage(submittedImage);
@@ -62,7 +68,8 @@ $(document).ready(function () {
     }
     
     submittedImage = $("#image-input").val().trim();
-    console.log(submittedImage);
+    $("#loadingGif").show();
+
     analyzePhoto();
     displayYourImage(submittedImage);
     $("#image-input").val("");
@@ -89,7 +96,11 @@ $( document ).ajaxError(function() {
 
 // FUNCTION FOR API FACE++
 function analyzePhoto() {
+  $("#memeDump").empty();
+  $("#knowyourmeme").hide();
+
   // API KEY JmLDfiZvxIblQdZh4RM0o_bKDTpIxI2p
+
   var imageURL = submittedImage
   var corsAnywhere = "https://cors-anywhere.herokuapp.com/";
   var queryURL = corsAnywhere + "https://api-us.faceplusplus.com/facepp/v3/detect"
@@ -127,6 +138,9 @@ function generateMeme(word) {
     method: "GET"
   }).then(function (response) {
     console.log(response);
+    $("#loadingGif").hide();
+    $("#knowyourmeme").hide();
+
     // EMPTY CURRENT MEME IMAGE 
     $("#memeDump").empty();
     // // CREATE NEW IMAGE
@@ -141,6 +155,15 @@ function generateMeme(word) {
     yourMeme.attr("src", memeURL);
     // // APPEND TO DIV TO SHOW ON HTML
     $("#memeDump").append(yourMeme);
+
+    // ADD MEME NAME
+    var memeName = $("<p>")
+    name = response.result[i].displayName.toUpperCase();
+    memeName.text(name);
+    $("#memeDump").append(memeName);
+
+    $("a").attr("href", "https://imgflip.com/search?q=" + name)
+    $("#knowyourmeme").show();
 
     submittedImage = $("#image-input").val().trim();
 

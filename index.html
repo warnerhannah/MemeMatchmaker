@@ -5,8 +5,8 @@
     <title>Meme Matchmaker</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
         crossorigin="anonymous">
-        <link href="https://fonts.googleapis.com/css?family=Cinzel" rel="stylesheet">
-    <link rel="stylesheet" href="assets/style.css">
+        <link href="https://fonts.googleapis.com/css?family=Freckle+Face|Nanum+Brush+Script" rel="stylesheet">
+        <link rel="stylesheet" href="assets/style.css">
     <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.8.6/firebase.js"></script>
@@ -14,15 +14,28 @@
 </head>
 
 <body>
-
     <header>
         <div class="jumbotron jumbotron-fluid">
             <div class="container">
                 <h1 class="display-4">The Meme Matchmaker</h1>
-                <p class="lead">Submit URL of an image below to return a random - but related! - meme.  Our application will analyze your facial expression and return a meme based on the emotion that you are showing. </p>
             </div>
         </div>
     </header>
+
+    <div class="col">
+        <div class="card" id="instructions">
+            <div class="card-body">
+                <h4>Instructions:</h4>
+                <p class="instructions">1. Submit the URL of an image</p>
+                <p class="instructions">2. Our system will process the subject's emotion through facial feature
+                    recognition</p>
+                <p class="instructions">3. Based on that emotion, our system will output a related meme (image) </p>
+                <p class="instructions">4. Enjoy your meme!</p>
+                <p>~ If you would like to test it out without submitting your own photo, please click on one of the
+                    provided images below ~</p>
+            </div>
+        </div>
+    </div>
 
     <div class="container">
         <div class="row">
@@ -35,19 +48,21 @@
 
                         <div class="row">
                             <div class="col">
-                                <img src="https://www.quickanddirtytips.com/sites/default/files/images/1390/woman-laughing.jpg" class="img-fluid" id="button-2" alt="Responsive image" >
+                                <img src="https://www.quickanddirtytips.com/sites/default/files/images/1390/woman-laughing.jpg"
+                                    class="img-fluid" id="button-2" alt="Responsive image">
                             </div>
 
                             <div class="col">
-                                <img src="https://s-i.huffpost.com/gen/2776836/images/o-ANGER-facebook.jpg" class="img-fluid" id="button-2" alt="Responsive image">
+                                <img src="https://s-i.huffpost.com/gen/2776836/images/o-ANGER-facebook.jpg" class="img-fluid"
+                                    id="button-2" alt="Responsive image">
                             </div>
 
                             <div class="col">
-                                <img src="https://www.verywellmind.com/thmb/rHEPbMG_R3z3UfCnnoCDjX9HQuQ=/768x0/filters:no_upscale():max_bytes(150000):strip_icc()/depressed_but_don-t_know_it-56af36565f9b58b7d016001d.jpg" class="img-fluid" id="button-2" alt="Responsive image" >
+                                <img src="https://www.verywellmind.com/thmb/rHEPbMG_R3z3UfCnnoCDjX9HQuQ=/768x0/filters:no_upscale():max_bytes(150000):strip_icc()/depressed_but_don-t_know_it-56af36565f9b58b7d016001d.jpg"
+                                    class="img-fluid" id="button-2" alt="Responsive image">
                             </div>
                         </div>
-                    
-                        
+
                         <div class="row">
                             <h5 class="card-title w-100 text-center" id="your-photo">Your Photo</h5>
                         </div>
@@ -62,32 +77,35 @@
 
                 </div>
             </div>
-        
-
 
             <div class="col">
-              <div class="card" style="width: 30rem;">
-                <div class="card-body">
-                    <h5 class="card-title">Meme Returned</h5>
-                    <div id="memeDump">
+                <div class="card" style="width: 30rem;">
+                    <div class="card-body" id="gifcontainer">
+                        <h5 class="card-title">Meme Returned</h5>
+                        <img src="assets/images/35.gif" alt="Loading Gif" id="loadingGif">
+                        <div id="memeDump">
+                        </div>
+                        <div id="knowyourmeme">
+                            <p> Learn More About Your Meme
+                                <a href="" target="blank">Here</a>
+                            </p>
+                        </div>
 
                     </div>
                 </div>
-              </div>
             </div>
         </div>
 
 
-            <div class="col">
-                <div class="card" id="recentmemes">
-                  <div class="card-body">
+        <div class="col">
+            <div class="card" id="recentmemes">
+                <div class="card-body">
                     <h5>Recent Memes Generated</h5>
                     <img id="recentmeme1" src="" alt="">
                     <img id="recentmeme2" src="" alt="">
                     <img id="recentmeme3" src="" alt="">
                     <img id="recentmeme4" src="" alt="">
                     <img id="recentmeme5" src="" alt="">
-                  </div>
                 </div>
               </div>
 
@@ -97,14 +115,12 @@
 
        </div>
     </div>
-    
+
     <footer>
         <p>&copy; MemeMatchmaker Productions</p>
+        <p>Created By: Hannah, Olga, & Ollie</p>
     </footer>
-     <script src="assets/javascript.js"></script>
- </body>
- 
- </html>
+    <script src="assets/javascript.js"></script>
+</body>
 
-
-
+</html>
