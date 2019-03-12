@@ -13,19 +13,6 @@ var database = firebase.database();
 // GLOBAL VARIABLES
 var keyword;
 var submittedImage;
-// OLLIE
-
-// TRY IT OUT 
-// On click of an image
-// Reference API 
-// Return MEME
-
-
-// INPUT TO SUBMIT YOUR OWN PHOTO 
-// SAVE THAT PHOTO TO A VARIABLE TO REFERENCE IT 
-// ON SUBMIT BUTTON
-// Reference API 
-// Return MEME
 
 
 $(document).ready(function () {
@@ -59,12 +46,6 @@ function displayYourImage(source) {
 }
 
 
-// HANNAH -
-// API FUNCTION - FACE PLUS PLUS
-// AJAX 
-// SUBMIT PHOTO TO QUERY
-// PULL DATA FROM FACE++
-// SAVE VARIABLES TO PLUG INTO MEME GENERATOR 
 function analyzePhoto() {
   // API KEY JmLDfiZvxIblQdZh4RM0o_bKDTpIxI2p
   var imageURL = submittedImage
