@@ -3,7 +3,6 @@
 }
 
 body {
-    padding: 20px;
     font-family: 'Cinzel', serif;
     background-color: lightslategray;
 }
@@ -29,9 +28,20 @@ body {
     height: 400px;
     text-align: center;
 }
+<<<<<<< HEAD
+.card {
+    margin-bottom: 20px;
+}
+
+footer {
+    background: white;
+    margin: 0;
+    padding: 0;
+=======
 
 #recentmemes {
     padding: 10px;
     margin-top: 20px;
     text-align: center;
+>>>>>>> 74fcfca0833767a938e0df72f69ad2e9e430c528
 }
