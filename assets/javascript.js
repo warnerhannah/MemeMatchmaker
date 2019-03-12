@@ -1,34 +1,46 @@
-// initialize firebase 
+// INITIALIZE FIREBASE
+var config = {
+  apiKey: "AIzaSyC5hdMO9KuQcj0MXvZUT62F-SylGGJDbyo",
+  authDomain: "memematchmaker.firebaseapp.com",
+  databaseURL: "https://memematchmaker.firebaseio.com",
+  projectId: "memematchmaker",
+  storageBucket: "memematchmaker.appspot.com",
+  messagingSenderId: "433999765554"
+};
+firebase.initializeApp(config);
+// DECLARE FIREBASE VARIABLE
+var database = firebase.database();
 
 // GLOBAL VARIABLES
 var keyword;
 var submittedImage;
-// OLLIE
-
-// TRY IT OUT 
-// On click of an image
-// Reference API 
-// Return MEME
 
 
-// INPUT TO SUBMIT YOUR OWN PHOTO 
-// SAVE THAT PHOTO TO A VARIABLE TO REFERENCE IT 
-// ON SUBMIT BUTTON
-// Reference API 
-// Return MEME
+// PULL RECENTLY GENERATED MEMES FROM FB 
+// DISPLAY THEM AS IMAGES 
+database.ref().on("value", function(snapshot){
+  $("#recentmeme1").attr("src", snapshot.val().meme);
+  $("#recentmeme2").attr("src", snapshot.val().meme);
+  $("#recentmeme3").attr("src", snapshot.val().meme);
+  $("#recentmeme4").attr("src", snapshot.val().meme);
+  $("#recentmeme5").attr("src", snapshot.val().meme);
+});
 
 
+// ON CLICK FXN FOR EXAMPLE IMAGES
 $(document).ready(function () {
-
   $("img").on("click", function picClick() {
+    // get the url of the site
     submittedImage = $(this).attr("url");
     console.log(submittedImage);
+    displayYourImage(submittedImage);
     analyzePhoto();
   })
 });
 
-$(document).ready(function () {
 
+// ON CLICK FXN FOR SUBMIT BUTTON
+$(document).ready(function () {
   $("#submit-image").on("click", function () {
     submittedImage = $("#image-input").val().trim();
     console.log(submittedImage);
@@ -38,23 +50,18 @@ $(document).ready(function () {
   })
 })
 
-
+// FUNCTION TO DISPLAY THE SUBMITTED IMAGES
 function displayYourImage(source) {
   console.log("working");
   $("#yourImageDump").empty();
   var yourImg = $("<img>");
+  console.log(yourImg);
   yourImg.attr("id", "your-pic");
   yourImg.attr("src", source);
   $("#yourImageDump").append(yourImg);
 }
 
-
-// HANNAH -
-// API FUNCTION - FACE PLUS PLUS
-// AJAX 
-// SUBMIT PHOTO TO QUERY
-// PULL DATA FROM FACE++
-// SAVE VARIABLES TO PLUG INTO MEME GENERATOR 
+// FUNCTION FOR API FACE++
 function analyzePhoto() {
   // API KEY JmLDfiZvxIblQdZh4RM0o_bKDTpIxI2p
   var imageURL = submittedImage
@@ -71,8 +78,6 @@ function analyzePhoto() {
       return_attributes: "emotion",
     }
   }).then(function (response) {
-
-    console.log(response)
     emotionsArray = ["anger", "disgust", "fear", "happiness", "neutral", "sadness", "surprise"]
     // var highestNumber = _(response.faces[0].attributes.emotion).values().max();
     obj = (response.faces[0].attributes.emotion);
@@ -85,10 +90,9 @@ function analyzePhoto() {
 
 
 
-// API FUNCTION - MEME GENERATOR
+// FUNCTION FOR API - MEMEGENERATOR
 function generateMeme(word) {
   // API KEY 9aa77d63-bbeb-4dba-ab33-cccbec5e6419
-  //.instanceImageURL for image!
   console.log(word);
   var queryURL = "http://version1.api.memegenerator.net/Generators_Search?q=" + word + "&apiKey=9aa77d63-bbeb-4dba-ab33-cccbec5e6419";
   console.log(queryURL);
@@ -101,19 +105,26 @@ function generateMeme(word) {
     $("#memeDump").empty();
     // // CREATE NEW IMAGE
     var yourMeme = $("<img>");
+
     yourMeme.attr("id", "your-meme");
+    console.log(yourMeme);
     // // TARGET URL FROM RESPONSE
     var i = Math.floor((Math.random() * 11) + 0);
-    console.log(i);
     var memeURL = response.result[i].imageUrl;
     // // CHANGE SOURCE TO NEW MEME URL
     yourMeme.attr("src", memeURL);
     // // APPEND TO DIV TO SHOW ON HTML
     $("#memeDump").append(yourMeme);
+
+    submittedImage = $("#image-input").val().trim();
+
+    // ASSIGN NEW MEMES TO FIREBASE
+    var newMeme = {
+      meme: memeURL,
+    };
+    console.log(newMeme);
+    database.ref().push(newMeme);
   }).catch(function (err) {
     console.log(err);
   });
 }
-
-
-// POSSIBILITY TO USE FIREBASE 
