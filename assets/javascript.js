@@ -14,17 +14,30 @@ var database = firebase.database();
 // GLOBAL VARIABLES
 var keyword;
 var submittedImage;
+var memeArray = [];
+
 
 
 // PULL RECENTLY GENERATED MEMES FROM FB 
 // DISPLAY THEM AS IMAGES 
-database.ref().on("value", function(snapshot){
-  $("#recentmeme1").attr("src", snapshot.val().meme);
-  $("#recentmeme2").attr("src", snapshot.val().meme);
-  $("#recentmeme3").attr("src", snapshot.val().meme);
-  $("#recentmeme4").attr("src", snapshot.val().meme);
-  $("#recentmeme5").attr("src", snapshot.val().meme);
+database.ref().on("child_added", function (snapshot) {
+  memeArray.push(snapshot.val().meme);
+
+  displayRecentMemes();
 });
+
+
+// append last 5 of array to display
+function displayRecentMemes() {
+  var useArray = (memeArray.slice(-5));
+
+  $("#recentmeme1").attr("src", useArray[0]);
+  $("#recentmeme2").attr("src", useArray[1]);
+  $("#recentmeme3").attr("src", useArray[2]);
+  $("#recentmeme4").attr("src", useArray[3]);
+  $("#recentmeme5").attr("src", useArray[4])
+}
+
 
 
 // ON CLICK FXN FOR EXAMPLE IMAGES
@@ -32,7 +45,6 @@ $(document).ready(function () {
   $("img").on("click", function picClick() {
     // get the url of the site
     submittedImage = $(this).attr("url");
-    console.log(submittedImage);
     displayYourImage(submittedImage);
     analyzePhoto();
   })
@@ -52,10 +64,8 @@ $(document).ready(function () {
 
 // FUNCTION TO DISPLAY THE SUBMITTED IMAGES
 function displayYourImage(source) {
-  console.log("working");
   $("#yourImageDump").empty();
   var yourImg = $("<img>");
-  console.log(yourImg);
   yourImg.attr("id", "your-pic");
   yourImg.attr("src", source);
   $("#yourImageDump").append(yourImg);
@@ -117,6 +127,8 @@ function generateMeme(word) {
     $("#memeDump").append(yourMeme);
 
     submittedImage = $("#image-input").val().trim();
+
+    memeArray.push(memeURL);
 
     // ASSIGN NEW MEMES TO FIREBASE
     var newMeme = {
