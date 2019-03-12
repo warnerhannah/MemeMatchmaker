@@ -13,6 +13,8 @@ var database = firebase.database();
 // GLOBAL VARIABLES
 var keyword;
 var submittedImage;
+var yourMeme;
+
 // OLLIE
 
 // TRY IT OUT 
@@ -31,9 +33,13 @@ var submittedImage;
 $(document).ready(function () {
 
   $("img").on("click", function picClick() {
+    alert("Click!")
+    // get the url of the site
     submittedImage = $(this).attr("url");
     console.log(submittedImage);
+    displayYourImage(submittedImage);
     analyzePhoto();
+
   })
 });
 
@@ -44,20 +50,20 @@ $(document).ready(function () {
     console.log(submittedImage);
     analyzePhoto();
     displayYourImage(submittedImage);
-    $("#image-input").val("");
+
+
   })
 })
-
-
 function displayYourImage(source) {
   console.log("working");
   $("#yourImageDump").empty();
   var yourImg = $("<img>");
+  console.log(yourImg);
+
   yourImg.attr("id", "your-pic");
   yourImg.attr("src", source);
   $("#yourImageDump").append(yourImg);
 }
-
 
 // HANNAH -
 // API FUNCTION - FACE PLUS PLUS
@@ -81,8 +87,6 @@ function analyzePhoto() {
       return_attributes: "emotion",
     }
   }).then(function (response) {
-
-    console.log(response)
     emotionsArray = ["anger", "disgust", "fear", "happiness", "neutral", "sadness", "surprise"]
     // var highestNumber = _(response.faces[0].attributes.emotion).values().max();
     obj = (response.faces[0].attributes.emotion);
@@ -111,19 +115,33 @@ function generateMeme(word) {
     $("#memeDump").empty();
     // // CREATE NEW IMAGE
     var yourMeme = $("<img>");
+
     yourMeme.attr("id", "your-meme");
+    console.log(yourMeme);
     // // TARGET URL FROM RESPONSE
     var i = Math.floor((Math.random() * 11) + 0);
-    console.log(i);
     var memeURL = response.result[i].imageUrl;
     // // CHANGE SOURCE TO NEW MEME URL
     yourMeme.attr("src", memeURL);
     // // APPEND TO DIV TO SHOW ON HTML
     $("#memeDump").append(yourMeme);
+
+    submittedImage = $("#image-input").val().trim();
+console.log(submittedImage)
+ var newMeme = {
+    meme: memeURL,
+    image: submittedImage,
+  };
+  console.log(newMeme);
+  database.ref().push(newMeme);
+
   }).catch(function (err) {
     console.log(err);
+
   });
+ 
 }
+
 
 
 // POSSIBILITY TO USE FIREBASE 
