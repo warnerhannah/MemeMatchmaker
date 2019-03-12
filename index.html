@@ -52,7 +52,7 @@
                             <h5 class="card-title w-100 text-center" id="your-photo">Your Photo</h5>
                         </div>
                         <div class="row" id="submit-input">
-                            <input type="text" name="lname" id="image-input"><br>
+                            <input name="lname" id="image-input" type="url" required><br>
                             <input type="submit" value="Submit" id="submit-image">
                         </div>
 
@@ -91,6 +91,8 @@
                 </div>
               </div>
 
+              <div id="toast">Invalid input</div>
+              <div id="snackbar">Server connection failed</div>
 
 
        </div>
