@@ -130,7 +130,6 @@ function generateMeme(word) {
 console.log(submittedImage)
  var newMeme = {
     meme: memeURL,
-    image: submittedImage,
   };
   console.log(newMeme);
   database.ref().push(newMeme);
