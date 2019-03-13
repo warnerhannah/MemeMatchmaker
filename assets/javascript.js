@@ -75,7 +75,14 @@ $(document).ready(function () {
 
     // RUN THROUGH APIS
     analyzePhoto();
+    
     displayYourImage(submittedImage);
+    var firstFive=submittedImage.slice(0,5);
+    if (firstFive!="https"){
+      var x = document.getElementById("toast");
+      x.className = "show";
+      setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+    }
     // CLEAR TEXT BOX
     $("#image-input").val("");
 
