@@ -10,11 +10,14 @@ var config = {
 firebase.initializeApp(config);
 // DECLARE FIREBASE VARIABLE
 var database = firebase.database();
+var corsAnywhere = "https://cors-anywhere.herokuapp.com/";
+
 
 // GLOBAL VARIABLES
 var keyword;
 var submittedImage;
 var memeArray = [];
+
 
 $("#loadingGif").hide();
 $("#knowyourmeme").hide();
@@ -30,9 +33,7 @@ database.ref().on("child_added", function (snapshot) {
 
 // append last 5 of array to display
 function displayRecentMemes() {
-  console.log(memeArray)
   var useArray = (memeArray.slice(-5));
-  console.log(useArray);
 
   $("#recentmeme1").attr("src", useArray[0]);
   $("#recentmeme2").attr("src", useArray[1]);
@@ -47,9 +48,7 @@ function displayRecentMemes() {
 $(document).ready(function () {
   $("img").on("click", function picClick() {
     // $("#memeDump").empty();
-
     $("#loadingGif").show();
-
     // get the url of the site
     submittedImage = $(this).attr("src");
     displayYourImage(submittedImage);
@@ -102,7 +101,6 @@ function analyzePhoto() {
   // API KEY JmLDfiZvxIblQdZh4RM0o_bKDTpIxI2p
 
   var imageURL = submittedImage
-  var corsAnywhere = "https://cors-anywhere.herokuapp.com/";
   var queryURL = corsAnywhere + "https://api-us.faceplusplus.com/facepp/v3/detect"
 
   $.ajax({
@@ -131,8 +129,8 @@ function analyzePhoto() {
 function generateMeme(word) {
   // API KEY 9aa77d63-bbeb-4dba-ab33-cccbec5e6419
   console.log(word);
-  var queryURL = "https://version1.api.memegenerator.net/Generators_Search?q=" + word + "&apiKey=9aa77d63-bbeb-4dba-ab33-cccbec5e6419";
-  console.log(queryURL);
+  var queryURL = corsAnywhere + "http://version1.api.memegenerator.net/Generators_Search?q=" + word + "&apiKey=9aa77d63-bbeb-4dba-ab33-cccbec5e6419";
+  console.log(queryURL)
   $.ajax({
     url: queryURL,
     method: "GET"
