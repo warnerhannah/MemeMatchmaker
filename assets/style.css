@@ -13,6 +13,7 @@ body {
 
 h1 {
     text-shadow: 5px 5px white;
+    text-align: center;
 }
 
 p {
@@ -47,8 +48,8 @@ h5{
 }
 
 .card-title {
-    margin-right:20%;
-    margin-left:20%;
+    margin-right:25%;
+    margin-left:25%;
 
     text-align: center;
 }
@@ -57,11 +58,6 @@ h5{
 }
 #your-photo {
     margin-top: 10px;
-}
-.col-md-6{
-    margin-left:auto;
-    margin-right:auto;
-
 }
 
 .card {
@@ -73,11 +69,18 @@ h5{
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
     -ms-overflow-style: -ms-autohiding-scrollbar;
+    padding:0px;
   }
 
+  .table-responsive2 {
+    width: 100%;
+    overflow-x: auto;
+    
+  }
 
-.container {
-    display:flex;
+#bigrow { 
+margin-left: auto;
+margin-right: auto;
 }
 footer {
     background: white;
@@ -111,7 +114,10 @@ footer p {
 #gifcontainer {
     text-align: center;
 }
-
+.container {
+    margin-right: auto;
+    margin-left: auto;
+}
 #toast {
     visibility: hidden;
     min-width: 250px;
