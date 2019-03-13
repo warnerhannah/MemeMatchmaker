@@ -25,6 +25,12 @@ h4 {
     text-align: center;
     
 }
+h5{
+    margin-right:auto;
+    margin-left:auto;
+
+    text-align:center;
+}
 
 #instructions {
     width: 80%;
@@ -36,6 +42,9 @@ h4 {
 }
 
 .card-title {
+    margin-right:20%;
+    margin-left:20%;
+
     text-align: center;
 }
 #submit-input {
@@ -44,25 +53,27 @@ h4 {
 #your-photo {
     margin-top: 10px;
 }
+.col-md-6{
+    margin-left:auto;
+    margin-right:auto;
 
-#your-pic {
-    width: 400px;
-    height: 300px;
-    padding: 10px;
-    text-align: center;
 }
 
-#your-meme {
-    width: 400px;
-    height: 400px;
-    text-align: center;
-}
 .card {
     margin-bottom: 20px;
-    margin-right: auto;
-    margin-left: auto;
 }
+.table-responsive {
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+  }
 
+
+.container {
+    display:flex;
+}
 footer {
     background: white;
     width: 100%;
@@ -95,6 +106,7 @@ footer p {
 #gifcontainer {
     text-align: center;
 }
+
 #toast {
     visibility: hidden;
     min-width: 250px;
