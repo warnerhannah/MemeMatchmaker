@@ -131,7 +131,7 @@ function analyzePhoto() {
 function generateMeme(word) {
   // API KEY 9aa77d63-bbeb-4dba-ab33-cccbec5e6419
   console.log(word);
-  var queryURL = "http://version1.api.memegenerator.net/Generators_Search?q=" + word + "&apiKey=9aa77d63-bbeb-4dba-ab33-cccbec5e6419";
+  var queryURL = "https://version1.api.memegenerator.net/Generators_Search?q=" + word + "&apiKey=9aa77d63-bbeb-4dba-ab33-cccbec5e6419";
   console.log(queryURL);
   $.ajax({
     url: queryURL,
