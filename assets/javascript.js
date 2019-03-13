@@ -61,17 +61,20 @@ $(document).ready(function () {
 // ON CLICK FXN FOR SUBMIT BUTTON
 $(document).ready(function () {
   $("#submit-image").on("click", function () {
-    if (!$("#image-input").val()){
-      var x = document.getElementById("toast");
-      x.className = "show";
-      setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
-    }
+    
     
     submittedImage = $("#image-input").val().trim();
     $("#loadingGif").show();
 
     analyzePhoto();
+    
     displayYourImage(submittedImage);
+    var firstFive=submittedImage.slice(0,5);
+    if (firstFive!="https"){
+      var x = document.getElementById("toast");
+      x.className = "show";
+      setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+    }
     $("#image-input").val("");
 
   })

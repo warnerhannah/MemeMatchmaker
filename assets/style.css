@@ -59,6 +59,8 @@ h4 {
 }
 .card {
     margin-bottom: 20px;
+    margin-right: auto;
+    margin-left: auto;
 }
 
 footer {
