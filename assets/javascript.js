@@ -17,7 +17,8 @@ var corsAnywhere = "https://cors-anywhere.herokuapp.com/";
 var keyword;
 var submittedImage;
 var memeArray = [];
-
+var genID;
+var imgID;
 
 $("#loadingGif").hide();
 $("#knowyourmeme").hide();
@@ -72,6 +73,15 @@ $(document).ready(function () {
     displayYourImage(submittedImage);
     $("#image-input").val("");
 
+  })
+})
+
+// ON CLICK TO ADD CAPTION
+$(document).ready(function () {
+  $("#addcaption").on("click", function () {
+    $("#loadingGif").show();
+
+    addCaption();
   })
 })
 
@@ -155,12 +165,12 @@ function generateMeme(word) {
 
     // ADD MEME NAME
     var memeName = $("<p>")
+    genID = response.result[i].generatorID;
+    imgID = response.result[i].imageID;
+
     name = response.result[i].displayName.toUpperCase();
     memeName.text(name);
     $("#memeDump").append(memeName);
-
-    $("a").attr("href", "https://imgflip.com/search?q=" + name)
-    $("#knowyourmeme").show();
 
     submittedImage = $("#image-input").val().trim();
 
@@ -168,9 +178,44 @@ function generateMeme(word) {
     var newMeme = {
       meme: memeURL,
     };
-    console.log(newMeme);
     database.ref().push(newMeme);
   }).catch(function (err) {
     console.log(err);
   });
 }
+
+
+// FUNCTION TO ADD CAPTION
+function addCaption(word) {
+  text0 = $("#text0").val();
+  text1 = $("#text1").val();
+  console.log(text0);
+  console.log(text1);
+
+  // API KEY 9aa77d63-bbeb-4dba-ab33-cccbec5e6419
+  var queryURL = corsAnywhere + "http://version1.api.memegenerator.net//Instance_Create?languageCode=en&generatorID=" + genID + "&imageID=" + imgID + "&text0=" + text0 + "&text1=" + text1 + "&apiKey=9aa77d63-bbeb-4dba-ab33-cccbec5e6419";
+  console.log(queryURL)
+  $.ajax({
+    url: queryURL,
+    method: "GET"
+  }).then(function (response) {
+    console.log(response);
+    $("#loadingGif").hide();
+
+    var newURL = response.result.instanceImageUrl;
+    console.log(newURL)
+
+    $("#memeDump").empty();
+    var yourMeme = $("<img>");
+    yourMeme.attr("id", "your-meme");
+    yourMeme.attr("src", newURL);
+
+    $("#memeDump").append(yourMeme);
+    text0 = $("#text0").val("");
+    text1 = $("#text1").val("");
+    
+  }).catch(function (err) {
+    console.log(err);
+  });
+}
+
