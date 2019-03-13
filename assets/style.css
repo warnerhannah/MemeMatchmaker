@@ -1,11 +1,40 @@
 .jumbotron {
     text-align: center;
+    background-image: url("images/header.jpg");
+    background-repeat: repeat;  
+    background-size: 200px;
+
 }
 
 body {
-    font-family: 'Cinzel', serif;
+    font-family: 'Freckle Face', cursive;
     background-color: lightslategray;
 }
+
+h1 {
+    text-shadow: 5px 5px white;
+}
+
+p {
+    font-family: 'Nanum Brush Script', cursive;
+    font-size: 30px;
+    text-align: center;
+}
+
+h4 {
+    text-align: center;
+    
+}
+
+#instructions {
+    width: 80%;
+    margin: 0 auto 20px auto;
+}
+
+.instructions {
+    text-align: left;
+}
+
 .card-title {
     text-align: center;
 }
@@ -34,15 +63,21 @@ body {
 
 footer {
     background: white;
-    margin: 0 auto;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
 }
 
 footer p {
     padding: 10px;
+    font-size: 20px;
 }
 
-#recentmemes { 
+#recentmemes {
+    padding: 10px;
+    margin: 0 auto 20px auto;
     text-align: center;
+    width: 90%;
 }
 
 #recentmeme1,
@@ -54,3 +89,66 @@ footer p {
     height: 150px;
     margin: 10px;
 }
+
+#gifcontainer {
+    text-align: center;
+}
+#toast {
+    visibility: hidden;
+    min-width: 250px;
+    margin-left: -125px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 2px;
+    padding: 16px;
+    position: fixed;
+    z-index: 1;
+    left: 50%;
+    bottom: 30px;
+    font-size: 17px;
+  }
+  #toast.show {
+    visibility: visible;
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  }
+  #snackbar {
+    visibility: hidden;
+    min-width: 250px;
+    margin-left: -125px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 2px;
+    padding: 16px;
+    position: fixed;
+    z-index: 1;
+    left: 50%;
+    bottom: 30px;
+    font-size: 17px;
+  }
+  #snackbar.show {
+    visibility: visible;
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  }
+  @-webkit-keyframes fadein {
+    from {bottom: 0; opacity: 0;} 
+    to {bottom: 30px; opacity: 1;}
+  }
+  
+  @keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+  }
+  
+  @-webkit-keyframes fadeout {
+    from {bottom: 30px; opacity: 1;} 
+    to {bottom: 0; opacity: 0;}
+  }
+  
+  @keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+  }
