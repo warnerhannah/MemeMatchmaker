@@ -86,9 +86,10 @@ h5{
     
   }
 
-#bigrow { 
-margin-left: auto;
-margin-right: auto;
+
+.container {
+    margin-right: auto;
+    margin-left: auto;
 }
 
 
