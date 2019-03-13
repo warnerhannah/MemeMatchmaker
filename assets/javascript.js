@@ -124,7 +124,6 @@ $( document ).ajaxError(function() {
 // FUNCTION FOR API FACE++
 function analyzePhoto() {
   $("#memeDump").empty();
-  $("#knowyourmeme").hide();
 
   // API KEY JmLDfiZvxIblQdZh4RM0o_bKDTpIxI2p
   // VARIABLES
@@ -153,7 +152,6 @@ function analyzePhoto() {
 };
 
 
-
 // FUNCTION FOR API - MEMEGENERATOR
 function generateMeme(word) {
   // API KEY 9aa77d63-bbeb-4dba-ab33-cccbec5e6419
@@ -175,12 +173,13 @@ function generateMeme(word) {
     var yourMeme = $("<img>");
     
     yourMeme.attr("id", "your-meme");
-    console.log(yourMeme);
     // // TARGET URL FROM RESPONSE
     var i = Math.floor((Math.random() * 11) + 0);
     var memeURL = response.result[i].imageUrl;
     // // CHANGE SOURCE TO NEW MEME URL
     yourMeme.attr("src", memeURL);
+    $("#downloadlink").attr("href", memeURL);
+
     // // APPEND TO DIV TO SHOW ON HTML
     $("#memeDump").append(yourMeme);
 
@@ -212,12 +211,9 @@ function addCaption() {
   // GRAB TEXT THAT USER INPUTTED
   text0 = $("#text0").val();
   text1 = $("#text1").val();
-  console.log(text0);
-  console.log(text1);
 
   // API KEY 9aa77d63-bbeb-4dba-ab33-cccbec5e6419
   var queryURL = corsAnywhere + "http://version1.api.memegenerator.net//Instance_Create?languageCode=en&generatorID=" + genID + "&imageID=" + imgID + "&text0=" + text0 + "&text1=" + text1 + "&apiKey=9aa77d63-bbeb-4dba-ab33-cccbec5e6419";
-  console.log(queryURL)
   $.ajax({
     url: queryURL,
     method: "GET"
@@ -226,7 +222,6 @@ function addCaption() {
     $("#loadingGif").hide();
     // GRAB NEW URL FOR CAPTIONED PHOTO
     var newURL = response.result.instanceImageUrl;
-    console.log(newURL)
 
     // CREATE IMAGE TO PLACE CAPTIONED MEME IN 
     $("#memeDump").empty();
@@ -234,6 +229,8 @@ function addCaption() {
     yourMeme.attr("id", "your-meme");
     yourMeme.attr("src", newURL);
     $("#memeDump").append(yourMeme);
+
+    $("#downloadlink").attr("href", newURL);
     // EMPTY USER TEXT BOXES
     text0 = $("#text0").val("");
     text1 = $("#text1").val("");
@@ -241,5 +238,4 @@ function addCaption() {
   }).catch(function (err) {
     console.log(err);
   });
-}
-
+};
