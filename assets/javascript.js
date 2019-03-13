@@ -62,7 +62,9 @@ $(document).ready(function () {
 
 // ON CLICK FXN FOR SUBMIT BUTTON
 $(document).ready(function () {
-  $("#submit-image").on("click", function () {
+  $("#submit-image").on("click", function (e) {
+    e.preventDefault();
+
     // VALIDATE USER INPUT
     if (!$("#image-input").val()){
       var x = document.getElementById("toast");
@@ -91,7 +93,8 @@ $(document).ready(function () {
 
 // ON CLICK TO ADD CAPTION
 $(document).ready(function () {
-  $("#addcaption").on("click", function () {
+  $("#addcaption").on("click", function (e) {
+    e.preventDefault();
     $("#loadingGif").show();
     // RUN CAPTION FUNCTION
     addCaption();
