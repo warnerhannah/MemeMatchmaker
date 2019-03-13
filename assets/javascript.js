@@ -157,7 +157,7 @@ function generateMeme(word) {
   }).then(function (response) {
     console.log(response);
     $("#loadingGif").hide();
-    $("#knowyourmeme").hide();
+    $("#knowyourmeme").show();
 
     // EMPTY CURRENT MEME IMAGE 
     $("#memeDump").empty();
@@ -198,7 +198,7 @@ function generateMeme(word) {
 
 
 // FUNCTION TO ADD CAPTION
-function addCaption(word) {
+function addCaption() {
   // GRAB TEXT THAT USER INPUTTED
   text0 = $("#text0").val();
   text1 = $("#text1").val();
