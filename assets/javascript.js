@@ -175,6 +175,8 @@ function generateMeme(word) {
     var memeURL = response.result[i].imageUrl;
     // // CHANGE SOURCE TO NEW MEME URL
     yourMeme.attr("src", memeURL);
+    $("#downloadlink").attr("href", memeURL);
+
     // // APPEND TO DIV TO SHOW ON HTML
     $("#memeDump").append(yourMeme);
 
@@ -224,6 +226,8 @@ function addCaption() {
     yourMeme.attr("id", "your-meme");
     yourMeme.attr("src", newURL);
     $("#memeDump").append(yourMeme);
+
+    $("#downloadlink").attr("href", newURL);
     // EMPTY USER TEXT BOXES
     text0 = $("#text0").val("");
     text1 = $("#text1").val("");

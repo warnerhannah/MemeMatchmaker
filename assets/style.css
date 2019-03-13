@@ -6,6 +6,14 @@
 
 }
 
+#your-pic,
+#your-meme {
+    height: 300px;
+    width: 400px;
+    padding: 20px;
+}
+
+
 body {
     font-family: 'Freckle Face', cursive;
     background-color: lightslategray;
@@ -79,6 +87,8 @@ h5{
 .container {
     display:flex;
 }
+
+
 footer {
     background: white;
     width: 100%;
