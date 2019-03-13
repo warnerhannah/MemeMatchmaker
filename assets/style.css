@@ -3,11 +3,7 @@
     background-image: url("images/header.jpg");
     background-repeat: repeat;  
     background-size: 200px;
-}
 
-.container {
-    display: flex;
-    justify-content: space-evenly;
 }
 
 body {
@@ -156,3 +152,4 @@ footer p {
     from {bottom: 30px; opacity: 1;}
     to {bottom: 0; opacity: 0;}
   }
+  
