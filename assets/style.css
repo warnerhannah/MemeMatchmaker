@@ -37,8 +37,13 @@ h5{
     margin: 0 auto 20px auto;
 }
 
+#captionbox {
+    border: 1px slateblue;
+}
+
 .instructions {
     text-align: left;
+    padding-left: 40px;
 }
 
 .card-title {
