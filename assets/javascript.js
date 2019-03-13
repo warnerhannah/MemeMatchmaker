@@ -43,7 +43,6 @@ function displayRecentMemes() {
 };
 
 
-
 // ON CLICK FXN FOR EXAMPLE IMAGES
 $(document).ready(function () {
   $("img").on("click", function picClick() {

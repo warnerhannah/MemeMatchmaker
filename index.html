@@ -3,8 +3,8 @@
 
 <head>
     <title>Meme Matchmaker</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Freckle+Face|Nanum+Brush+Script" rel="stylesheet">
     <link rel="stylesheet" href="assets/style.css">
     <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
@@ -40,7 +40,7 @@
     <div class="container">
         <div class="row">
 
-            <div class="col"  id="containercontents">
+            <div class="col" id="containercontents">
                 <div class="card" style="width: 30rem;">
                     <div class="card-body">
                         <h5 class="card-title">Try It Out!</h5>
@@ -53,8 +53,8 @@
                             </div>
 
                             <div class="col">
-                                <img src="https://s-i.huffpost.com/gen/2776836/images/o-ANGER-facebook.jpg" class="img-fluid"
-                                    id="button-2" alt="Responsive image">
+                                <img src="https://s-i.huffpost.com/gen/2776836/images/o-ANGER-facebook.jpg"
+                                    class="img-fluid" id="button-2" alt="Responsive image">
                             </div>
 
                             <div class="col">
@@ -67,15 +67,16 @@
                             <h5 class="card-title w-100 text-center" id="your-photo">URL to Image:</h5>
                         </div>
                         <div class="row" id="submit-input">
-                            <input name="lname" id="image-input" type="url" required><br>
-                            <input type="submit" value="Submit" id="submit-image">
+                            <form>
+                                <input name="lname" id="image-input" type="url" required>
+                                <input type="submit" value="Submit" id="submit-image">
+                            </form>
                         </div>
 
-                            <div class="row" id="yourImageDump">
-                            </div>
+                        <div class="row" id="yourImageDump">
                         </div>
-
                     </div>
+
                 </div>
             </div>
 
@@ -91,7 +92,11 @@
                                 <a href="" target="blank">Here</a>
                             </p>
                         </div>
+
+                    </div>
+                </div>
             </div>
+        </div>
 
     </div>
     <div class="col">
@@ -106,19 +111,6 @@
             </div>
         </div>
 
-        <div class="col">
-            <div class="card" id="recentmemes">
-                <div class="card-body">
-                    <h5>Recent Memes Generated</h5>
-                    <img id="recentmeme1" src="" alt="">
-                    <img id="recentmeme2" src="" alt="">
-                    <img id="recentmeme3" src="" alt="">
-                    <img id="recentmeme4" src="" alt="">
-                    <img id="recentmeme5" src="" alt="">
-                </div>
-            </div>
-
-       </div>
         <div id="toast">Invalid input</div>
         <div id="snackbar">Server connection failed</div>
     </div>
