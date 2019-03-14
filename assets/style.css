@@ -72,7 +72,7 @@ h5{
     margin-bottom: 20px;
 }
 .table-responsive {
-    width: 100%;
+    width: auto;
     overflow-x: auto;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
